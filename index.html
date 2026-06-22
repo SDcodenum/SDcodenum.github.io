@@ -2,98 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PhDima</title>
+
+  <title>Dmitry Shishkin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Dmitry Shishkin — personal landing page.">
+
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f2937'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white'%3EDS%3C/text%3E%3C/svg%3E">
 
   <style>
+    :root {
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --accent: #1f2937;
+      --soft: #f9fafb;
+    }
+
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: #fafafa;
-      color: #333;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #eef2ff 0, transparent 30rem),
+        linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
       line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 20px;
     }
 
     main {
-      max-width: 700px;
-      width: 100%;
-      background-color: white;
-      padding: 40px;
-      margin-top: 40px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 76px 22px 46px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      text-align: center;
-      font-weight: 600;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      font-weight: 700;
     }
 
-    p {
-      margin-bottom: 20px;
-      font-size: 1rem;
+    .section {
+      margin-top: 1.5rem;
     }
 
-    a {
-      color: #0066cc;
+    .section-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #374151;
+    }
+
+    .link-grid {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .link-card {
+      min-width: 145px;
+      min-height: 78px;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      background: white;
       text-decoration: none;
-      padding: 10px 15px;
-      display: inline-block;
-      border: 1px solid #d0d7de;
-      border-radius: 4px;
-      transition: background-color 0.2s ease;
+      font-weight: 700;
+      line-height: 1.15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
-    a:hover {
-      background-color: #f0f0f0;
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: #9ca3af;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
     }
 
-    a:active {
-      background-color: #e0e0e0;
+    .link-icon {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      flex: 0 0 auto;
     }
 
-    a:focus-visible {
-      outline: 2px solid #0066cc;
-      outline-offset: 3px;
+    .logo-only {
+      width: 88px;
+      height: 88px;
+      padding: 10px;
+      flex: 0 0 auto;
     }
 
-    /* Mobile optimization */
-    @media (max-width: 600px) {
-      body {
-        padding: 12px;
-      }
+    .ads-logo-only {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+    }
 
+    .github-icon svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+      fill: var(--text);
+    }
+
+    .card-text span {
+      display: block;
+    }
+
+    .card-text small {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.76rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .publication-row {
+      display: flex;
+      gap: 0.8rem;
+      align-items: stretch;
+    }
+
+    .latest-paper {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .paper-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .paper-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+    .paper-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .paper-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    footer {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
       main {
-        padding: 20px;
-        margin-top: 20px;
-        border-radius: 0;
-        box-shadow: none;
+        padding-top: 44px;
       }
-
-      h1 {
-        font-size: 1.75rem;
-        margin-bottom: 20px;
+      .card {
+        padding: 24px;
       }
-
-      p {
-        font-size: 0.95rem;
+      .header {
+        align-items: flex-start;
       }
-
-      a {
-        padding: 12px 16px;
+      .link-card {
+        width: 100%;
+        justify-content: flex-start;
       }
     }
   </style>
@@ -101,15 +213,77 @@
 
 <body>
   <main>
-    <h1>Dmitry Shishkin</h1>
+    <section class="card">
+      <header class="header">
+        <h1>Dmitry Shishkin</h1>
+      </header>
 
-    <p>
-      Under construction.
-    </p>
+      <p style="color: var(--muted); margin-bottom:1.5rem;">
+        Website under construction.
+      </p>
 
-    <p>
-      <a href="https://ui.adsabs.harvard.edu/search/filter_author_facet_hier_fq_author=AND&amp;filter_author_facet_hier_fq_author=author_facet_hier%3A%221%2FShishkin%2C%20D%2FShishkin%2C%20Dmitry%22&amp;fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&amp;fq=%7B!type%3Daqp%20v%3D%24fq_author%7D&amp;fq_author=(author_facet_hier%3A%221%2FShishkin%2C%20D%2FShishkin%2C%20Dmitry%22)&amp;fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&amp;q=author%3A%22Shishkin%2C%20Dmitry%22&amp;sort=date%20desc%2C%20bibcode%20desc&amp;p_=0">ADS</a>
-    </p>
+      <section class="section" aria-labelledby="publications-title">
+        <div class="section-label" id="publications-title">
+          Latest publications:
+        </div>
+
+        <div class="publication-row">
+          <a class="link-card logo-only"
+             href="https://ui.adsabs.harvard.edu/search/filter_author_facet_hier_fq_author=AND&amp;filter_author_facet_hier_fq_author=author_facet_hier%3A%221%2FShishkin%2C%20D%2FShishkin%2C%20Dmitry%22&amp;fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&amp;fq=%7B!type%3Daqp%20v%3D%24fq_author%7D&amp;fq_author=(author_facet_hier%3A%221%2FShishkin%2C%20D%2FShishkin%2C%20Dmitry%22)&amp;fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&amp;q=author%3A%22Shishkin%2C%20Dmitry%22&amp;sort=date%20desc%2C%20bibcode%20desc&amp;p_=0"
+             target="_blank"
+             rel="noopener"
+             aria-label="ADS publication list">
+            <img class="ads-logo-only"
+                 src="resources/ads_logo_full_light_background.svg"
+                 alt="SAO/NASA ADS">
+          </a>
+
+          <div class="latest-paper">
+            <a class="paper-card"
+               href="https://www.doi.org/10.1088/1538-3873/ae7692"
+               target="_blank"
+               rel="noopener">
+              <div class="paper-title">
+                Quantifying Symmetry: Transformation Information for Planetary Nebulae and Supernova Remnants
+              </div>
+              <div class="paper-meta">
+                PASP · 2026
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="profiles-title">
+        <div class="link-grid">
+          <a class="link-card" href="https://orcid.org/0000-0002-9444-9460" target="_blank" rel="noopener">
+            <img class="link-icon"
+                 src="https://orcid.org/assets/vectors/orcid.logo.icon.svg"
+                 alt=""
+                 aria-hidden="true">
+            <span class="card-text">
+              <span>ORCID</span>
+            </span>
+          </a>
+
+          <a class="link-card" href="https://github.com/SDcodenum" target="_blank" rel="noopener">
+            <span class="link-icon github-icon" aria-hidden="true">
+              <svg viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.081 11.897-.081 13.526 0 1.304.89 2.853 3.316 2.364C83.988 89.389 98 70.973 98 49.217 98 22 76.161 0 48.854 0z"/>
+              </svg>
+            </span>
+            <span class="card-text">
+              <span>GitHub</span>
+            </span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      Last updated: June 2026
+    </footer>
   </main>
 </body>
 </html>
